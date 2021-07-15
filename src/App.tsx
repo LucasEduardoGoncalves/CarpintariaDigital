@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import GlobalStyles from './styles/styles'; 
+
+import { Dashboard } from './pages/dashboard';
+import { Sites } from './pages/sites';
+import { Contato } from './pages/contato';
+import { Feedback } from './pages/feedback';
+
+import { HeaderComponent } from './components/HeaderComponent';
+import { Container } from './styles/styles';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <GlobalStyles/>
+      <HeaderComponent/>
+      <Container>
+          <Switch>
+            <Route path='/' exact component={Dashboard}/>
+            <Route path='/sites' component={Sites}/>
+            <Route path='/contato' component={Contato}/>
+            <Route path='/feedback' component={Feedback}/>
+          </Switch>
+      </Container>
+    </BrowserRouter>
   );
 }
 
